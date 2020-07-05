@@ -10,7 +10,8 @@ import random
 word_list = list()
 filehandle = open('engmix.txt')
 for word in filehandle:
-    if len(word) > 3:
-        word_list.append(word)
-
-print(word_list)
+    print(word, end=" ")
+    # if len(word) > 3:
+    #     word_list.append(word)
+    
+# print(word_list)
