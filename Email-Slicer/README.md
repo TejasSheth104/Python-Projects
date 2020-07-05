@@ -1,1 +1,1 @@
-# Guess-the-Number
+# Email-Slicer
