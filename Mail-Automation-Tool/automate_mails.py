@@ -147,4 +147,3 @@ server.starttls()
 server.login(userid, password)
 server.sendmail(userid, 'to', text)
 server.quit()
-
