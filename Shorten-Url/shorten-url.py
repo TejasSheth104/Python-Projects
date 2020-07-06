@@ -27,16 +27,14 @@ cur.execute('''
     )''')
 
 
-def random_url(length):
-    new_url = ''
+def random_url(new_url, length):
     new_url += generate_random(length)
     return new_url
 
 
-def custom_url(length):
-    new_url = ''
+def custom_url(new_url, length):
     print('Should be EQUAL to the length specified - ie.,\'', length, '\' characters long.')
-    new_url = input('Type your desired URL - ')
+    new_url += input('Type your desired URL - ')
     while len(new_url) != length:
         if len(new_url) > length:
             print(len(new_url) - length, ' characters extra - ')
@@ -77,10 +75,10 @@ def make_it_short():
         length = 7
 
     if option == 1:
-        generated_url = custom_url(length)
+        generated_url = custom_url(new_url, length)
         return generated_url
     elif option == 2:
-        generated_url = random_url(length)
+        generated_url = random_url(new_url, length)
         return generated_url
 
 
