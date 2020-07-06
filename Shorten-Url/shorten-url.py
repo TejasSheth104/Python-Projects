@@ -33,16 +33,34 @@ def random_url(new_url, length):
 
 
 def custom_url(new_url, length):
+    new_add = ''
+    identical = True
     print('Should be EQUAL to the length specified - ie.,\'', length, '\' characters long.')
-    new_url += input('Type your desired URL - ')
-    while len(new_url) != length:
-        if len(new_url) > length:
-            print(len(new_url) - length, ' characters extra - ')
-            print('Removing extra Characters =')
-            new_url = new_url[len(new_url) - length:]
-        elif len(new_url) < length:
-            print(length - len(new_url), ' characters needed - ')
-            new_url += input('Enter ', length - len(new_url), ' characters to the end = ')
+    while identical:
+        new_add = input('Type your desired URL - ')
+
+        cur.execute('SELECT * FROM smalify')
+        for just_verify in cur.fetchall():
+            if just_verify[0] != (new_url + new_add):
+                identical = False
+            else:
+                identical = True
+                break
+
+    while len(new_add) != length:
+        print('debug1')
+        if len(new_add) > length:
+            print('debug2')
+            print(len(new_add) - length, ' characters extra - ')
+            print('\tRemoving extra Characters !')
+            new_add = new_add[:length]
+        elif len(new_add) < length:
+            print('debug3')
+            print(length - len(new_add), ' characters needed - ')
+            input_question = 'Enter ', length - len(new_add), ' characters to the end = '
+            new_add += input(input_question)
+        
+    new_url = new_url + new_add
     return new_url
 
 
