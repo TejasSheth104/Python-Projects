@@ -25,14 +25,33 @@ cur.execute('''
     )''')
 
 
+def random_url(length):
+    new_url += generate_random(length)
+    return new_url
+
+
+def custom_url(length):
+
+
+
+
 def make_it_short():
     new_url = 'www.small.fy/'
     length = ''
     try:
+        option = int(input('Choose -\n1. Generate Custom URL\n2. Generate Random URL\nEnter - '))
+        if 1 > option > 2:
+            print('InValid Input - Default => 2. Selected')
+            option = 2
+    except TypeError:
+        print('InValid Input - Default => 2. Selected')
+        option = 2
+
+    try:
         length = int(input('Enter the length of the address URL or (type 0 for Default) - '))
     except TypeError:
-        print('Try Again Please...')
-        exit(0)
+        print('InValid Input - Default => 7...')
+        length = 7
     if length == 0:
         print('Set Length to DEFAULT - 7')
         length = 7
@@ -43,14 +62,19 @@ def make_it_short():
         print('C\'mon, you wanted to reduce the Length of the URL')
         print('Set Length to DEFAULT - 7')
         length = 7
-    new_url += generate_random(length)
-    return new_url
+
+    if option == 1:
+        generated_url = custom_url(length)
+        return generated_url
+    elif option == 2:
+        generated_url = random_url(length)
+        return generated_url
 
 
 def generate_random(length):
     all_chars = string.ascii_letters + string.digits
     address = ''
-    for value in range(length):
+    for _ in range(length):
         address += random.choice(all_chars)
     return address
 
