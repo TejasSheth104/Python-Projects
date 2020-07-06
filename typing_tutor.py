@@ -8,10 +8,12 @@ import random
 
 # clearing the smaller words from the file 'engmix.txt'
 word_list = list()
-filehandle = open('engmix.txt')
-for word in filehandle:
-    print(word, end=" ")
-    # if len(word) > 3:
-    #     word_list.append(word)
+filehandle = open('newwords.txt', errors='ignore')
+# fh2 = open('newwords.txt', "a")
+# for word in filehandle:
+#     if len(word) > 6:
+#         print(word, end="")
+#         fh2.write(word)
     
-# print(word_list)
+# fh2.close()
+
