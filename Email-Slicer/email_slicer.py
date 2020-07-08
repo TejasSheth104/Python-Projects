@@ -4,6 +4,7 @@
 # eg.   tejassheth104@gmail.com  =>     tejassheth104,      gmail.com
 
 import sqlite3
+import string
 import ssl
 import re
 import urllib.request, urllib.parse, urllib.error
@@ -103,12 +104,12 @@ while True:
         cur.execute('''INSERT OR REPLACE INTO username (u_name) 
             VALUES (?)''', (pieces[0], ))
         cur.execute('SELECT id FROM username WHERE u_name = ?', (pieces[0], ))
-        user_id = cur.fetchone()[0]
+        user_id = cur.fetchall()[0]
 
         cur.execute('''INSERT OR REPLACE INTO domain_name (dm_name)
             VALUES (?)''', (pieces[1], ))
         cur.execute('SELECT id FROM domain_name WHERE dm_name = ?', (pieces[1], ))
-        domain_id = cur.fetchone()[0]
+        domain_id = cur.fetchall()[0]
 
         cur.execute('''INSERT OR REPLACE INTO e_mail (address, user_id, domain_id)
             VALUES (?, ?, ?)''', (piece, user_id, domain_id))
