@@ -45,18 +45,21 @@ def view_record():
         print('INVALID OPTION SELECTED, Default -> 1.')
         select = 1
     if select == 1:
-        view_by = 'Title'
+        # view_by = 'Title'
         title = input('Enter the Title - ')
         view_type = title
+        cur.execute('SELECT * FROM storePass WHERE Title = ?', (view_type))
+        for row in cur.fetchall():
+            print(row)
     elif select == 2:
-        view_by = 'Security_QnA'
+        # view_by = 'Security_QnA'
         QnA = input('Enter the Security Answer(if any, 0 for NULL) - ')
         if QnA == 0:
             QnA = 'NULL'
         view_type = QnA
-    cur.execute('SELECT * FROM storePass WHERE ? LIKE ?', (view_by, view_type))
-    for row in cur.fetchall():
-        print(row)
+        cur.execute('SELECT * FROM storePass WHERE Security_QnA = ?', (view_type))
+        for row in cur.fetchall():
+            print(row)
 
 
 def check(title):
