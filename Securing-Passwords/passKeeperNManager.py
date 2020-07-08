@@ -56,7 +56,6 @@ def view_record():
         view_type = QnA
     cur.execute('SELECT * FROM storePass WHERE ? LIKE ?', (view_by, view_type))
     for row in cur.fetchall():
-        print('1234 check')
         print(row)
 
 
