@@ -3,7 +3,7 @@
 #
 letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 numbers = "1234567890"
-symbols = "!@#$%^&*()_-;\|:,.><?/"
+symbols = "\\!@#$%^&*()_-;|:,.><?/"
 
 
 def condition(count_symbols, count_number, count_letter):
@@ -12,9 +12,7 @@ def condition(count_symbols, count_number, count_letter):
     if count_letter <= (int(len(pswd) / 3)): print('Use More Letters.')
 
 
-letter = 0
-number = 0
-symbol = 0
+letter, number, symbol = 0, 0, 0
 pswd = input('Enter your Password - ')
 if len(pswd) > 7:
     for piece in pswd:
