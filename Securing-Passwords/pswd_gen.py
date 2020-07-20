@@ -10,39 +10,43 @@
 # minimum of 6 characters
 
 import random
-alphas = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ'
+import string
+alphas = string.ascii_letters
 numsym = '1234567890@._-#$%*!'
 get_pass = list()
 generate = list()
-length, chars, num_sym, password = 0, 0, 0, ""
+
 
 # while True:
-try:
-    length = int(input('Enter Length of your Desired Password - '))
-    if length < 6 or length > 20:
-        print('Out of Bounds Error')
-        exit(404)
-    chars = int(input('Enter Count of Letters in your Desired Password - '))
-    num_sym = length - chars
-except ValueError:
-    print('InValid Input.')
-    exit(-1)
-count = 1
-while count <= chars:
-    print(count, chars)
-    get_pass.append(random.choice(alphas))
-    count += 1
-count = 1
-while count <= num_sym:
-    print(count, num_sym)
-    get_pass.append(random.choice(numsym))
-    count += 1
+def generating():
+    length, chars, num_sym, password = 0, 0, 0, ""
+    try:
+        length = int(input('Enter Length of your Desired Password - '))
+        if length < 6 or length > 20:
+            print('Out of Bounds Error')
+            exit(404)
+        chars = int(input('Enter Count of Letters in your Desired Password - '))
+        num_sym = length - chars
+    except ValueError:
+        print('InValid Input.')
+        exit(-1)
+    count = 1
+    while count <= chars:
+        print(count, chars)
+        get_pass.append(random.choice(alphas))
+        count += 1
+    count = 1
+    while count <= num_sym:
+        print(count, num_sym)
+        get_pass.append(random.choice(numsym))
+        count += 1
 
-print(get_pass)
-for temp in range(length):
-    generate.append(random.choice(get_pass))
-print(generate)
-for mix in generate:
-    password = password + str(mix)
+    print(get_pass)
+    random.shuffle(get_pass)
+    # for _ in range(length):
+    #     generate.append(random.choice(get_pass))
+#    print(generate)
+    for mix in get_pass:
+        password = password + str(mix)
 
-print('Your Password is - ', password)
+    print('Your Password is - ', password)

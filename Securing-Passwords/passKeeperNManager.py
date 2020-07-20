@@ -4,6 +4,8 @@
 
 import sqlite3
 import getpass
+from pswd_gen import generating
+from pswd_validator import validator
 
 conn = sqlite3.connect('SafeKeeper.sqlite')
 cur = conn.cursor()
@@ -95,6 +97,8 @@ def check(title):
 
 
 print('WELCOME - ')
+generating()
+validator()
 print('What do you want to do?')
 try:
     select = int(input(' 1.) ADD NEW.\n 2.) VIEW EXISTING.\nEnter - '))
