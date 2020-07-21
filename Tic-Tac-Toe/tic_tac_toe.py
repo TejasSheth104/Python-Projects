@@ -72,3 +72,24 @@ def play_user():
 
 play_user()
 
+while True:
+    print('\n\tTIC TAC TOE.')
+    print('\n\tPLAY AS - ')
+    print('\t1. PLAYER1 vs COMPUTER')
+    print('\t2. PLAYER1 vs PLAYER2')
+    print('\t3. COMPUTER vs PLAYER2')
+    print('\t0. EXIT')
+    try:
+        choice = int(input('Enter - '))
+    except:
+        print('iNnvalid Try again')
+        continue
+    if choice == 0:
+        break
+    elif choice == 1:
+        break
+    elif choice == 2:
+        play_user()
+    elif choice == 3:
+        break
+    
