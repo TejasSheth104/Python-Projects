@@ -1,4 +1,4 @@
-# snakes game on the NOKIA Phones, -_,-
+# TIC TAC TOE.
 
 board = dict()
 board = { '1': '1', '2': '2', '3': '3',
