@@ -143,11 +143,11 @@ def play_comp_v_comp():
 
 while True:
     print('\n\tTIC TAC TOE.')
+    print('\t0. EXIT')
     print('\n\tPLAY AS - ')
     print('\t1. PLAYER1 vs COMPUTER')
     print('\t2. PLAYER1 vs PLAYER2')
     print('\t3. COMPUTER vs COMPUTER')
-    print('\t0. EXIT')
     try:
         choice = int(input('Enter - '))
     except:
