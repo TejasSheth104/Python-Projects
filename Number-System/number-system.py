@@ -25,9 +25,17 @@ def decimal_binary():
             print('Thanks. Back to the Menu.')
             break
         if select == 1:
+            binary = ''
             decimal = int(input('Enter Decimal - '))
             result = decimal / 2
-            print(int(result))
+            while result != 0:
+                remainder = result % 2
+                remainder = str(remainder)
+                binary = remainder + binary
+                result = decimal / 2
+            remainder = 1
+            binary = str(remainder) + binary
+            print(remainder)
             break
         elif select == 2:
             break
