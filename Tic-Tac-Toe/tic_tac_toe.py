@@ -147,7 +147,7 @@ while True:
     print('\n\tPLAY AS - ')
     print('\t1. PLAYER1 vs COMPUTER')
     print('\t2. PLAYER1 vs PLAYER2')
-    print('\t3. COMPUTER vs COMPUTER')
+    print('\t3. COMPUTER1 vs COMPUTER2')
     try:
         choice = int(input('Enter - '))
     except:
