@@ -8,6 +8,8 @@
 # 6.) hexadecimal <=> binary
 
 from decimal__binary import decimal_binary
+from decimal__octal import decimal_octal
+from decimal__hexadecimal import deNcimal_hexadecimal
 
 
 while True:
