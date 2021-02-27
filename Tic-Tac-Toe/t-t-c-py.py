@@ -1,14 +1,3 @@
-# tic-tac-toe GUI
-
-from tkinter import *
-
-window = Tk()
-window.title("Tic-Tac-Toe")
-window.geometry("400x400")
-
-r1=Radiobutton(text="Opt1",value=1).pack()
-r2=Radiobutton(text="Opt2",value=2).pack()
-window.mainloop()
 
 # import random
 
