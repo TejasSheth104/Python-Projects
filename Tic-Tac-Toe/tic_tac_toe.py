@@ -43,7 +43,7 @@ def winning_condition(count, chance):
             (board['1'] == board['5'] and board['5'] == board['9']) or \
             (board['3'] == board['5'] and board['5'] == board['7']) or \
             (board['7'] == board['8'] and board['8'] == board['9']):
-            print('Winner is - ', chance)
+            print('\nWinner is - ', chance)
             draw_board(board)
             print("\nGame Over.\n")
             return 1
@@ -144,14 +144,14 @@ def play_comp_v_comp():
 while True:
     print('\n\tTIC TAC TOE.')
     print('\t0. EXIT')
-    print('\n\tPLAY AS - ')
+    print('\n\tPLAY - ')
     print('\t1. PLAYER1 vs COMPUTER')
     print('\t2. PLAYER1 vs PLAYER2')
     print('\t3. COMPUTER1 vs COMPUTER2')
     try:
         choice = int(input('Enter - '))
     except:
-        print('iNnvalid Try again')
+        print('Invalid, Try again')
         continue
     if choice == 0:
         break
