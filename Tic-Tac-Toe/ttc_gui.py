@@ -29,9 +29,9 @@ def draw_grid(window):
     grid_but9=Button(window, textvariable=place_value9, width=10,height=4, command=lambda: key_press("",place_value9))
     grid_but9.grid(row=7,column=3)
 
-def play_uservcomp(window):
-    draw_grid(window)
-    pass
+# def play_uservcomp(window):
+#     draw_grid(window)
+#     pass
 
 def play_uservuser(window):
     draw_grid(window)
@@ -63,10 +63,10 @@ def main_body():
 
     # opt1=Button(window, text="PLAYER vs COMPUTER", command=lambda: mode('1'), width=30,height=1)
     # opt2=Button(window, text="PLAYER1 vs PLAYER2", command=lambda: mode('2'), width=30,height=1)
-    opt1=Button(window, text="PLAYER vs COMPUTER (click again to RESET)", command=lambda: play_uservcomp(window), width=35,height=1)
-    opt2=Button(window, text="PLAYER1 vs PLAYER2 (click again to RESET)", command=lambda: play_uservuser(window), width=35,height=1)
+    # opt1=Button(window, text="PLAYER vs COMPUTER (click again to RESET)", command=lambda: play_uservcomp(window), width=35,height=1)
+    opt2=Button(window, text="PLAYER1 vs PLAYER2 (click again to RESET)", command=lambda: play_uservuser(window), width=30,height=1)
     opt3=Button(window, text="EXIT", command=window.destroy, width=30,height=1)
-    opt1.grid(row=0, columnspan=4)
+    # opt1.grid(row=0, columnspan=4)
     opt2.grid(row=1, columnspan=4)
     opt3.grid(row=2, columnspan=4)
 
