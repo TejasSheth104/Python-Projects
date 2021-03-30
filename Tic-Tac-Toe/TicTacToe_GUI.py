@@ -70,9 +70,10 @@ def chance(box_num):
                 counter+=1
                 player2.append(box_num)
                 return 'O'
-
+#  limit key press to only once, and pop error on 2ndkey press. USe dictionary to map, 1-0,2-1,3-0,4-1 and so on. 
 def key_press(box_num,val,place_value):
     global p_val,counter
+    # limit key press function here.
     p_val=chance(box_num)+val
     place_value.set(p_val)
     win_cond()
