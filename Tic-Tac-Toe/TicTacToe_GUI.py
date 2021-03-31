@@ -4,9 +4,12 @@ from tkinter import *
 from tkinter.messagebox import *
 from itertools import permutations
 
+window=Tk()
 p_val=""
 counter=0
+terminate=False
 player1,player2=list(),list()
+keypress_count={1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
 
 def draw_grid(window):
     place_value1, place_value2, place_value3=StringVar(), StringVar(), StringVar()
@@ -33,7 +36,7 @@ def draw_grid(window):
     grid_but9.grid(row=7,column=3)
 
 def win_cond():
-    global counter
+    global counter,terminate
     poss_1=permutations([1,2,3])
     poss_2=permutations([4,5,6])
     poss_3=permutations([7,8,9])
@@ -50,10 +53,12 @@ def win_cond():
 
             if play1:
                 showinfo("RESULT - ","Player 1 WINS. !!!")
-                break
+                terminate=True
+                return terminate
             elif play2:
                 showinfo("RESULT - ","Player 2 WINS. !!!")
-                break
+                terminate=True
+                return terminate
             # elif counter==9:
             #     showinfo("RESULT - ","Its a DRAW. !!!")
             #     break
@@ -61,8 +66,7 @@ def win_cond():
             #     pass
 
 def chance(box_num):
-    global counter
-    global player1,player2
+    global counter,player1,player2
     for box_num_value in range(1,10):
         if box_num==box_num_value:
             if counter%2==0:
@@ -73,28 +77,43 @@ def chance(box_num):
                 counter+=1
                 player2.append(box_num)
                 return 'O'
-#  limit key press to only once, and pop error on 2ndkey press. USe dictionary to map, 1-0,2-1,3-0,4-1 and so on. 
+
+def limit_keypress(box_key):
+    global keypress_count
+    if keypress_count[box_key]==0:
+        keypress_count[box_key]=1
+        return True
+    else:
+        return False
+
 def key_press(box_num,val,place_value):
-    global p_val,counter
-    # limit key press function here.
-    p_val=chance(box_num)+val
-    place_value.set(p_val)
-    win_cond()
+    global p_val,counter,window,terminate,keypress_count,player1,player2
+    if limit_keypress(box_num):
+        p_val=chance(box_num)+val
+        place_value.set(p_val)
+        if win_cond():
+            msg=askquestion(title="TRY AGAIN", message="WANT TO PLAY AGAIN?")
+            if msg=='yes':
+                draw_grid(window)
+                terminate=False
+                counter=0
+                p_val=""
+                player1,player2=list(),list()
+                keypress_count={1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
+            if msg=='no':
+                window.destroy()
 
 def main_body():
-    window = Tk()
+    global window
     window.title("Tic Tac Toe")
     window.geometry("300x400")
 
-    lab_def=Label(window, text="Player1 = X\nPlayer2 = O\n", width=40,height=2)
+    lab_def=Label(window, text="\nPlayer1 = X\nPlayer2 = O\n", width=40,height=2)
     lab_def.grid(row=2, columnspan=4)
 
     draw_grid(window)
 
-    # lab_res=Label(window, text="Winner is - ", width=40,height=2)
-    # lab_res.grid(row=9, columnspan=4)
-
-    quit_button=Button(window, text="EXIT", command=window.destroy, width=30,height=1)
+    quit_button=Button(window, text="EXIT", command=window.destroy, width=20,height=1)
     quit_button.grid(row=10, columnspan=4)
 
     window.mainloop()
