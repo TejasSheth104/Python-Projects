@@ -1,7 +1,7 @@
 # tic-tac-toe GUI
 
 from tkinter import *
-from tkinter.messagebox import showinfo
+from tkinter.messagebox import *
 from itertools import permutations
 
 p_val=""
@@ -50,12 +50,15 @@ def win_cond():
 
             if play1:
                 showinfo("RESULT - ","Player 1 WINS. !!!")
+                break
             elif play2:
                 showinfo("RESULT - ","Player 2 WINS. !!!")
+                break
             # elif counter==9:
             #     showinfo("RESULT - ","Its a DRAW. !!!")
-            else:
-                pass
+            #     break
+            # else:
+            #     pass
 
 def chance(box_num):
     global counter
@@ -83,13 +86,13 @@ def main_body():
     window.title("Tic Tac Toe")
     window.geometry("300x400")
 
-    lab_def=Label(window, text="Player1 = X\nPlayer2 = O", width=40,height=2)
+    lab_def=Label(window, text="Player1 = X\nPlayer2 = O\n", width=40,height=2)
     lab_def.grid(row=2, columnspan=4)
 
     draw_grid(window)
 
-    lab_res=Label(window, text="Winner is - ", width=40,height=2)
-    lab_res.grid(row=9, columnspan=4)
+    # lab_res=Label(window, text="Winner is - ", width=40,height=2)
+    # lab_res.grid(row=9, columnspan=4)
 
     quit_button=Button(window, text="EXIT", command=window.destroy, width=30,height=1)
     quit_button.grid(row=10, columnspan=4)
