@@ -36,7 +36,7 @@ def draw_grid(window):
     grid_but9.grid(row=7,column=3)
 
 def win_cond():
-    global counter,terminate
+    global counter,terminate,player1,player2
     poss_1=permutations([1,2,3])
     poss_2=permutations([4,5,6])
     poss_3=permutations([7,8,9])
@@ -61,7 +61,8 @@ def win_cond():
                 return terminate
             # elif counter==9:
             #     showinfo("RESULT - ","Its a DRAW. !!!")
-            #     break
+            #     terminate=True
+            #     return terminate
             # else:
             #     pass
 
@@ -101,6 +102,7 @@ def key_press(box_num,val,place_value):
                 player1,player2=list(),list()
                 keypress_count={1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
             if msg=='no':
+                showinfo("EXIT","THANK YOU. !!!")
                 window.destroy()
 
 def main_body():
