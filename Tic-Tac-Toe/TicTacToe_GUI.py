@@ -59,12 +59,17 @@ def win_cond():
                 showinfo("RESULT - ","Player 2 WINS. !!!")
                 terminate=True
                 return terminate
-            # elif counter==9:
-            #     showinfo("RESULT - ","Its a DRAW. !!!")
-            #     terminate=True
-            #     return terminate
-            # else:
-            #     pass
+            temp_var=0
+            for value in keypress_count.values():
+                if value==1:
+                    temp_var=1
+                else:
+                    temp_var=0
+                    break
+            if temp_var==1:
+                showinfo("RESULT - ","It's a DRAW. !!!")
+                terminate=True
+                return terminate
 
 def chance(box_num):
     global counter,player1,player2
