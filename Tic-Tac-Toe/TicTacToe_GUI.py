@@ -118,34 +118,78 @@ def key_press(box_num,place_value,button_play1,button_play2):
                 p_val=""
                 player1,player2=list(),list()
                 keypress_count={1:0,2:0,3:0,4:0,5:0,6:0,7:0,8:0,9:0}
-                draw_grid(window)
+                draw_grid(window,button_play1,button_play2)
 # thank you message and exit.
             if msg=='no':
                 showinfo("EXIT","THANK YOU. !!!")
                 window.destroy()
+
+def show_frame(frame):
+    frame.tkraise()
 
 def main_body():
     global window
     window.title("Tic Tac Toe")
     window.geometry("340x400")
 
+    frame_main=Frame(window)
+    frame_pComp=Frame(window)
+    frame_pUser=Frame(window)
+
+    for frame in (frame_main, frame_pComp, frame_pUser):
+        frame.grid(row=0,column=0,sticky='nsew')
+
+    opt_user=Button(frame_main, text="User v User", font=('arial',10,'bold') ,width=18,height=1, command=lambda:show_frame(frame_pUser))
+    opt_user.grid(row=1, columnspan=4,sticky='w')
+
+    opt_comp=Button(frame_main, text="User v Comp", font=('arial',10,'bold') ,width=18,height=1, command=lambda:show_frame(frame_pComp))
+    opt_comp.grid(row=2, columnspan=4,sticky='e')
+
 # Highlighted Button, implies that players turn to play.
-    button_play1=Button(window, text="Player1: 'X'", font=('arial',10,'bold') ,width=18,height=1)
-    button_play1.grid(row=1, columnspan=4,sticky='w')
+#     button_play1=Button(window, text="Player1: 'X'", font=('arial',10,'bold') ,width=18,height=1)
+#     button_play1.grid(row=2, columnspan=4,sticky='w')
 
-    button_play2=Button(window, text="Player2: 'O'", font=('arial',10,'bold') ,width=18,height=1,state=DISABLED)
-    button_play2.grid(row=1, columnspan=4,sticky='e')
+#     button_play2=Button(window, text="Player2: 'O'", font=('arial',10,'bold') ,width=18,height=1,state=DISABLED)
+#     button_play2.grid(row=2, columnspan=4,sticky='e')
 
-# a 3x3 grid to play on.
-# passing button1 and button2 as parameters to help toggle at every chance.
-    draw_grid(window,button_play1,button_play2)
+# # a 3x3 grid to play on.
+# # passing button1 and button2 as parameters to help toggle at every chance.
+#     draw_grid(window,button_play1,button_play2)
 
-    reset_button=Button(window, bg='black', fg='red', text="RESET", command=main_body, font=('arial',10,'bold') ,width=18,height=1)
-    reset_button.grid(row=8,columnspan=4,sticky='w')
+#     # reset_button=Button(window, bg='black', fg='red', text="RESET", command=main_body, font=('arial',10,'bold') ,width=18,height=1)
+#     # reset_button.grid(row=8,columnspan=4,sticky='w')
+
 # exit button to terminate program immediately
-    quit_button=Button(window, bg='black', fg='red', text="EXIT", command=window.destroy, font=('arial',10,'bold') ,width=18,height=1)
+    quit_button=Button(frame_main, bg='black', fg='red', text="EXIT", command=window.destroy, font=('arial',10,'bold') ,width=18,height=1)
     quit_button.grid(row=8,columnspan=4,sticky='e')
 
+#==================Frame Comp code
+    # Highlighted Button, implies that players turn to play.
+    button_play=Button(frame_pComp, text="Player: 'X'", font=('arial',10,'bold') ,width=18,height=1)
+    button_play.grid(row=3, columnspan=4,sticky='w')
+
+    button_play=Button(frame_pComp, text="Computer: 'O'", font=('arial',10,'bold') ,width=18,height=1,state=DISABLED)
+    button_play.grid(row=3, columnspan=4,sticky='e')
+    
+    draw_grid(frame_pComp,button_play,button_play)
+
+    exit_comp=Button(frame_pComp, bg='black', fg='red', text="BACK", command=lambda:show_frame(frame_main), font=('arial',10,'bold') ,width=18,height=1)
+    exit_comp.grid(row=8,columnspan=4,sticky='nsew')
+
+#==================Frame User code
+    button_play=Button(frame_pUser, text="Player1: 'X'", font=('arial',10,'bold') ,width=18,height=1)
+    button_play.grid(row=3, columnspan=4,sticky='w')
+
+    button_play=Button(frame_pUser, text="Player2: 'O'", font=('arial',10,'bold') ,width=18,height=1,state=DISABLED)
+    button_play.grid(row=3, columnspan=4,sticky='e')
+
+    draw_grid(frame_pUser,button_play,button_play)
+
+    exit_user=Button(frame_pUser, bg='black', fg='red', text="BACK", command=lambda:show_frame(frame_main), font=('arial',10,'bold') ,width=18,height=1)
+    exit_user.grid(row=8,columnspan=4,sticky='nsew')
+
+    show_frame(frame_main)
+    
     window.mainloop()
 
 if __name__ == '__main__':

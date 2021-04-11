@@ -83,8 +83,8 @@ def check(title):
                 print('Enter the Password and/or Security Answer to Title - ', title)
                 new_pswd = getpass.getpass('Enter the Password - ')
                 new_QnA = input('Enter the Security Answer(if any, 0 for NULL) - ')
-                if QnA == 0:
-                    QnA = 'NULL'
+                if new_QnA == 0:
+                    new_QnA = 'NULL'
             
                 data = (new_pswd, new_QnA, title_name[0])
                 cur.execute('''
